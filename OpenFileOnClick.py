@@ -53,26 +53,47 @@ class OpenFileOnClickCommand(sublime_plugin.WindowCommand):
     print('Stack jump: ' + frame)
     m = re.search(r'\(([\w\.]+):(\d+)\)$', frame)
     if m:
-      self.jump_to_file(m.group(1), m.group(2))
+      self.jump_to_file(m.group(1), m.group(2), frame.split('.'))
 
   def jump_to_ref(self, ref):
     print('Ref jump: ' + ref)
     m = re.search(r'/([\w\.]+):(\d+)$', ref)
     if m:
-      self.jump_to_file(m.group(1), m.group(2))
+      self.jump_to_file(m.group(1), m.group(2), ref.split('/'))
 
-  def jump_to_file(self, filename, line):
+  def jump_to_file(self, filename, line, knownPathChunks):
     files = self.locate_file(filename)
+    def open_file(file):
+      self.window.open_file(
+        '{0}:{1}'.format(file, line), sublime.ENCODED_POSITION)
 
     if len(files) == 0:
       print('File not found: {0}'.format(filename))
 
     elif len(files) == 1:
-      self.window.open_file(
-        '{0}:{1}'.format(files[0], line), sublime.ENCODED_POSITION)
+      open_file(files[0])
 
     else:
-      print('More than one alternative found for {0} – unsupported for the moment'.format(filename))
+      # If one of the found files is already open, prefer it
+      open_files = [ v.file_name() for v in self.window.views() ]
+      for file in files:
+        if file in open_files:
+          return open_file(file)
+
+      # Otherwise proceed to ordering files and prompting the user
+      def file_ordering(file):
+        score = 0
+        chunks = file.split('/')
+        for c in chunks:
+          if c in knownPathChunks:
+            score += 1
+        return score
+
+      ordered_files = sorted(files, key = file_ordering, reverse = True)
+      if file_ordering(ordered_files[0]) == file_ordering(ordered_files[1]):
+        self.window.show_quick_panel(ordered_files, lambda id: open_file(ordered_files[id]))
+      else:
+        open_file(ordered_files[0])
 
 
   def want_event(self):
