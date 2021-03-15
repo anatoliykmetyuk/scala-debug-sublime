@@ -1,0 +1,6 @@
+{
+  "snippets": {
+    "debug_value": "{{ println(s\"\"\"\\u001b[43;1m\\u001b[30mDEBUG:\\u001b[0m {0} = ${{{0}}}\"\"\"); {0} }}",
+    "dump_stack": "println(Thread.currentThread.getStackTrace.mkString(\"\\n\"))"
+  }
+}

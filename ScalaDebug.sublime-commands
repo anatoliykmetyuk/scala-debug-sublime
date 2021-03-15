@@ -1,0 +1,5 @@
+[
+  { "caption": "ScalaDebug: Debug Variable",
+    "command": "scala_debug",
+  },
+]
