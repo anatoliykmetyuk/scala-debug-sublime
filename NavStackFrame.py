@@ -2,15 +2,33 @@ import sublime
 import sublime_plugin
 import os, re
 
-def get_filepaths_with_oswalk(root_path: str, file_regex: str):
+# https://stackoverflow.com/a/61995543/3895471
+# https://stackoverflow.com/a/19859907/3895471 – to filter dirs
+def get_filepaths_with_oswalk(root_path: str, file_regex: str, excludePtrns = []):
+  exclude = [ re.compile(p) for p in excludePtrns ]
+  def not_excluded(path):
+    for p in exclude:
+      if p.match(path):
+        return False
+    return True
+
   files_paths = []
   pattern = re.compile(file_regex)
-  for root, directories, files in os.walk(root_path):
+  for root, dirs, files in os.walk(root_path):
+    if exclude:
+      dirs[:] = [d for d in dirs if not_excluded(os.path.join(root, d))]
     for file in files:
       if pattern.match(file):
         files_paths.append(os.path.join(root, file))
   return files_paths
 
+# Finds the top-left window coordinates of a view
+# To do so:
+# 1. Get visible region's start point
+# 2. Try to obtain it's window coordinates
+# 3. If these are (0, 0), this means the character at the point
+#    is partially obscured. Try to get the coordinates of the
+#    following characters until we get a non-(0, 0) value.
 def view_coords(view):
   first_visible_point = view.visible_region().a
   x, y = 0, 0
@@ -19,13 +37,14 @@ def view_coords(view):
     first_visible_point = first_visible_point + 1  # Find the first fully visible character
   return x, y - view.line_height()
 
-class OpenFileOnClickCommand(sublime_plugin.WindowCommand):
+class NavStackFrameCommand(sublime_plugin.WindowCommand):
   cache = []
 
   def locate_file(self, target):
     if not self.cache:
+      exclude = sublime.load_settings("NavStackFrame.sublime-settings").get("exclude")
       for folder in self.window.folders():
-        self.cache = get_filepaths_with_oswalk(folder, ".*\.(scala|java)$")
+        self.cache = get_filepaths_with_oswalk(folder, r".*\.(scala|java)$", exclude)
     return [s for s in self.cache if s.endswith('/{0}'.format(target))]
 
   def locate_current_view(self, x, y):
