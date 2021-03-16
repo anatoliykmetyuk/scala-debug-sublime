@@ -1,0 +1,3 @@
+{
+  "settings_location": "dotty/pinpoint-cfg.json",  // Relative to project root dir
+}

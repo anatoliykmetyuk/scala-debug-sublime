@@ -1,6 +1,13 @@
 {
   "snippets": {
-    "debug_value": "{{ println(s\"\"\"\\u001b[43;1m\\u001b[30mDEBUG:\\u001b[0m {0} = ${{{0}}}\"\"\"); {0} }}",
-    "dump_stack": "println(Thread.currentThread.getStackTrace.mkString(\"\\n\"))"
+    "debug_value_simple": "{{ println(s\"\"\"\\u001b[43;1m\\u001b[30mDEBUG:\\u001b[0m {0} = ${{{0}}}\"\"\"); {0} }}",
+    "dump_stack_simple": "println(Thread.currentThread.getStackTrace.mkString(\"\\n\"))",
+    "show_value_simple": "{{ println(s\"\"\"\\u001b[43;1m\\u001b[30mDEBUG:\\u001b[0m {0} = ${{{0}.show}}\"\"\"); {0} }}",
+
+    // Pinpoint
+    "pinpoint_dep": "libraryDependencies += \"com.akmetiuk\" % \"pinpoint_3.0.0-RC1\" % \"0.1.0\",",
+    "debug_value": "{{ pinpoint.log(s\"\"\"{0} = ${{{0}}}\"\"\", 0); {0} }}",
+    "dump_stack": "pinpoint.log(Thread.currentThread.getStackTrace.mkString(\"\\n\"))",
+    "show_value": "{{ pinpoint.log(s\"\"\"{0} = ${{{0}.show}}\"\"\", 0); {0} }}",
   }
 }

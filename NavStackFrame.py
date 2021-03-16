@@ -76,7 +76,7 @@ class NavStackFrameCommand(sublime_plugin.WindowCommand):
 
   def jump_to_ref(self, ref):
     print('Ref jump: ' + ref)
-    m = re.search(r'/([\w\.]+):(\d+)$', ref)
+    m = re.search(r'/([\w\.]+):(\d+)', ref)
     if m:
       self.jump_to_file(m.group(1), m.group(2), ref.split('/'))
 
