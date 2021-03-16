@@ -68,3 +68,15 @@ class PinpointUnmarkCommand(sublime_plugin.WindowCommand):
     settings = pinpoint_settings()
     settings['markers'].pop()
     write_pinpoint_settings(settings)
+
+class PinpointResetCommand(sublime_plugin.WindowCommand):
+  def run(self):
+    init(self.window.folders())
+    settings = pinpoint_settings()
+    settings['markers'].clear()
+    write_pinpoint_settings(settings)
+
+class PinpointViewCfgCommand(sublime_plugin.WindowCommand):
+  def run(self):
+    init(self.window.folders())
+    self.window.open_file(pinpoint_cfg_file)

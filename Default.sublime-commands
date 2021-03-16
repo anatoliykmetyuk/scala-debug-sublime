@@ -1,8 +1,11 @@
 [
-  { "caption": "Pinpoint: Initialize",
-    "command": "pinpoint_init",
-  },
   { "caption": "ScalaDebug: Debug Variable",
     "command": "scala_debug",
+  },
+  { "caption": "Pinpoint: Reset",
+    "command": "pinpoint_reset",
+  },
+  { "caption": "Pinpoint: View Config",
+    "command": "pinpoint_view_cfg",
   },
 ]
