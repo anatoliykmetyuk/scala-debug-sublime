@@ -1,3 +1,7 @@
 {
-  "settings_location": "dotty/pinpoint-cfg.json",  // Relative to project root dir
+  "settings": {
+    "pinpoint_cfg": "pinpoint-cfg.json",
+    "build_dep_marker": "    libraryDependencies += \"com.novocode\" % \"junit-interface\" % \"0.11\" % Test,",
+    "build_dep": "    libraryDependencies += \"com.akmetiuk\" % \"pinpoint_3.0.0-RC1\" % \"0.1.0\",",
+  }
 }
