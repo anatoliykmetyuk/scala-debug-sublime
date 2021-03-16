@@ -1,4 +1,7 @@
 [
+  { "caption": "Pinpoint: Initialize",
+    "command": "pinpoint_init",
+  },
   { "caption": "ScalaDebug: Debug Variable",
     "command": "scala_debug",
   },
