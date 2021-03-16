@@ -13,7 +13,9 @@ def locate_build_file(root):
       if pattern.match(full_path):
         return full_path
 
-def init(roots, settings):
+def init(roots):
+  settings = sublime.load_settings("Pinpoint.sublime-settings").get("settings")  # To have the nice ['foo'] syntax
+
   # Locate the build file and the pinpoint config
   global build_file
   global dotty_dir
@@ -50,8 +52,19 @@ def write_pinpoint_settings(settings):
   with open(pinpoint_cfg_file, 'w') as outfile:
     json.dump(settings, outfile)
 
-class PinpointInitCommand(sublime_plugin.WindowCommand):
+class PinpointMarkCommand(sublime_plugin.TextCommand):
+  def run(self, edit):
+    init(self.view.window().folders())
+    settings = pinpoint_settings()
+
+    if len(self.view.sel()) == 1:
+      sel_region = self.view.sel()[0]
+      settings['markers'].append(self.view.substr(sel_region))
+      write_pinpoint_settings(settings)
+
+class PinpointUnmarkCommand(sublime_plugin.WindowCommand):
   def run(self):
-    settings = sublime.load_settings("Pinpoint.sublime-settings").get("settings")  # To have the nice ['foo'] syntax
-    init(self.window.folders(), settings)
-    # open.pinpoint_cfg_file
+    init(self.window.folders())
+    settings = pinpoint_settings()
+    settings['markers'].pop()
+    write_pinpoint_settings(settings)
