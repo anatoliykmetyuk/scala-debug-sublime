@@ -20,6 +20,7 @@
       "debug_value": "{{ pinpoint.log(s\"\"\"{sel} = ${{{sel}}}\"\"\", {ppt_level}); {sel} }}",
       "dump_stack": "pinpoint.log(Thread.currentThread.getStackTrace.mkString(\"\\n\"), {ppt_level})",
       "show_value": "{{ pinpoint.log(s\"\"\"{sel} = ${{{sel}.show}}\"\"\", {ppt_level}); {sel} }}",
+      "show_list": "{{ pinpoint.log(s\"\"\"{sel} = ${{{sel}.map(_.show)}}\"\"\", {ppt_level}); {sel} }}",
     }
   },
 }

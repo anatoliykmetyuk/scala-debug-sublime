@@ -63,7 +63,7 @@ class NavStackFrameCommand(sublime_plugin.WindowCommand):
       sublime.CLASS_WORD_START | sublime.CLASS_WORD_END, ' ')
     highlight = clickedView.substr(highlightRegion)
 
-    if re.compile(r'^[\w\.\$\(\)\:]+$').match(highlight):
+    if re.compile(r'^[\w\.\$\(\)\:\<\>]+$').match(highlight):
       self.jump_to_stack_frame(highlight)
     else:
       self.jump_to_ref(highlight)

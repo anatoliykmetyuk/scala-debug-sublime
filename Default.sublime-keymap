@@ -20,7 +20,7 @@
     }
   },
   { "keys": ["ctrl+z"], "command": "better_toggle_zoom" },
-
+  { "keys": ["ctrl+e"], "command": "terminus_reset" },
 
   // Reference
   { "keys": ["super+alt+c"], "command": "copy_reference" },
@@ -29,8 +29,11 @@
   { "keys": ["alt+d"], "command": "scala_debug", "args": {"snippet": "debug_value"} },
   { "keys": ["alt+s"], "command": "scala_debug", "args": {"snippet": "dump_stack"} },
   { "keys": ["alt+a"], "command": "scala_debug", "args": {"snippet": "show_value"} },
+  { "keys": ["alt+shift+a"], "command": "scala_debug", "args": {"snippet": "show_list"} },
 
   // Pinpoint
   { "keys": ["alt+q"], "command": "pinpoint_mark" },
   { "keys": ["alt+w"], "command": "pinpoint_unmark" },
+  { "keys": ["alt+shift+q"], "command": "pinpoint_set" },
+  { "keys": ["alt+shift+w"], "command": "pinpoint_reset" },
 ]
