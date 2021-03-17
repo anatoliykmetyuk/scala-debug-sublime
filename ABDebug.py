@@ -16,6 +16,11 @@ class AbDebugCommand(sublime_plugin.WindowCommand):
         if os.path.splitext(view.file_name())[1] == '.abdebug':
           return view
 
+  def find_terminus_view(self):
+    for view in self.window.views():
+      if view.name() == 'Login Shell' or 'Terminus' in view.name():
+        return view
+
   def run(self, test = None):
     params_view = self.find_test_params_view()
     params_raw = params_view.substr(sublime.Region(0, params_view.size()))
@@ -23,10 +28,16 @@ class AbDebugCommand(sublime_plugin.WindowCommand):
 
     def execute(target_test):
       target_test_params = params[target_test]
+      terminus_view = self.find_terminus_view()
+
       self.window.run_command('pinpoint_set',
         { 'markers': target_test_params['markers'] })
-      self.window.run_command('terminus_send_string',
-        { 'string': target_test_params['command'] + '\n' })
+      terminus_view.run_command('terminus_reset')
+
+      def callback():
+        self.window.run_command('terminus_send_string',
+          { 'string': target_test_params['command'] + '\n' })
+      sublime.set_timeout(callback, 100),
 
     if test:
       execute(test)
