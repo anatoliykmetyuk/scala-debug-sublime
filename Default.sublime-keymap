@@ -34,6 +34,8 @@
   // Pinpoint
   { "keys": ["alt+q"], "command": "pinpoint_mark" },
   { "keys": ["alt+w"], "command": "pinpoint_unmark" },
-  { "keys": ["alt+shift+q"], "command": "pinpoint_set" },
-  { "keys": ["alt+shift+w"], "command": "pinpoint_reset" },
+
+  // AB Debug
+  { "keys": ["alt+z"], "command": "ab_debug", "args": {"test": "good"}},
+  { "keys": ["alt+x"], "command": "ab_debug", "args": {"test": "bad"}},
 ]

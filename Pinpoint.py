@@ -62,15 +62,12 @@ class PinpointMarkCommand(sublime_plugin.TextCommand):
       settings['markers'].append(self.view.substr(sel_region))
       write_pinpoint_settings(settings)
 
-class PinpointSetCommand(sublime_plugin.TextCommand):
-  def run(self, edit):
-    init(self.view.window().folders())
+class PinpointSetCommand(sublime_plugin.WindowCommand):
+  def run(self, markers):
+    init(self.window.folders())
     settings = pinpoint_settings()
-
-    if len(self.view.sel()) == 1:
-      sel_region = self.view.sel()[0]
-      settings['markers'] = self.view.substr(sel_region).split(' ')
-      write_pinpoint_settings(settings)
+    settings['markers'] = markers
+    write_pinpoint_settings(settings)
 
 class PinpointUnmarkCommand(sublime_plugin.WindowCommand):
   def run(self):

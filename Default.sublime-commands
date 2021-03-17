@@ -8,4 +8,12 @@
   { "caption": "Pinpoint: View Config",
     "command": "pinpoint_view_cfg",
   },
+  {
+    "caption": "AB Debug: Create Debug Params File",
+    "command": "ab_debug_test_file",
+  },
+  {
+    "caption": "AB Debug",
+    "command": "ab_debug",
+  }
 ]
