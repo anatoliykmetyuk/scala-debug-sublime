@@ -1,10 +1,10 @@
 {
-	"good": {
-    "command": "issue foo Test-healthy",
-    "markers": []
-  },
   "bad": {
     "command": "issue foo Test",
+    "markers": []
+  },
+	"good": {
+    "command": "issue foo Test-good",
     "markers": []
   }
 }

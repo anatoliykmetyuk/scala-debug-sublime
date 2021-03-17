@@ -36,6 +36,6 @@
   { "keys": ["alt+w"], "command": "pinpoint_unmark" },
 
   // AB Debug
-  { "keys": ["alt+z"], "command": "ab_debug", "args": {"test": "good"}},
-  { "keys": ["alt+x"], "command": "ab_debug", "args": {"test": "bad"}},
+  { "keys": ["alt+z"], "command": "ab_debug", "args": {"test": "bad"}},
+  { "keys": ["alt+x"], "command": "ab_debug", "args": {"test": "good"}},
 ]
