@@ -2,6 +2,7 @@ import sublime
 import sublime_plugin
 
 from .Pinpoint import init, pinpoint_settings
+from .ABDebug import load_ab_debug_params
 
 class ScalaDebugCommand(sublime_plugin.TextCommand):
   def run(self, edit, snippet):
@@ -10,7 +11,11 @@ class ScalaDebugCommand(sublime_plugin.TextCommand):
 
     if 'pinpoint.log' in target_snippet:
       init(self.view.window().folders())
-      pinpoint_level = len(pinpoint_settings()['markers'])
+      ab_debug_params = load_ab_debug_params(self.view.window())
+      if ab_debug_params:
+        pinpoint_level = len(ab_debug_params['bad']['markers'])
+      else:
+        pinpoint_level = len(pinpoint_settings()['markers'])
 
     for r in self.view.sel():
       text = self.view.substr(r)
