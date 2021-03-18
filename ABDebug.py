@@ -7,7 +7,7 @@ def load_ab_debug_params(window):
     if view.file_name():
       if os.path.splitext(view.file_name())[1] == '.abdebug':
         params_raw = view.substr(sublime.Region(0, view.size()))
-        return json.loads(params_raw)
+        return sublime.decode_value(params_raw)
 
 class AbDebugCreateParamsFileCommand(sublime_plugin.TextCommand):
   def run(self, edit):
