@@ -30,7 +30,6 @@ def init(roots):
   if not os.path.exists(pinpoint_cfg_file):
     default_settings = {
       "markers": [],
-      "hash_size": 8
     }
     write_pinpoint_settings(default_settings)
 
@@ -59,7 +58,7 @@ class PinpointMarkCommand(sublime_plugin.TextCommand):
 
     if len(self.view.sel()) == 1:
       sel_region = self.view.sel()[0]
-      settings['markers'].append(self.view.substr(sel_region))
+      settings['markers'].append(int(self.view.substr(sel_region)))
       write_pinpoint_settings(settings)
 
 class PinpointSetCommand(sublime_plugin.WindowCommand):
