@@ -30,6 +30,7 @@
   { "keys": ["alt+s"], "command": "scala_debug", "args": {"snippet": "dump_stack"} },
   { "keys": ["alt+a"], "command": "scala_debug", "args": {"snippet": "show_value"} },
   { "keys": ["alt+shift+a"], "command": "scala_debug", "args": {"snippet": "show_list"} },
+  { "keys": ["alt+f"], "command": "scala_debug", "args": {"snippet": "creation_tracer"} },
 
   // Pinpoint
   { "keys": ["alt+q"], "command": "pinpoint_mark" },

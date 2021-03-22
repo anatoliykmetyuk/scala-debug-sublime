@@ -17,10 +17,13 @@
 
       // Pinpoint
       "pinpoint_dep": "libraryDependencies += \"com.akmetiuk\" % \"pinpoint_3.0.0-RC1\" % \"0.1.0\",",
-      "debug_value": "{{ pinpoint.log(s\"\"\"{sel} = ${{{sel}}}\"\"\", {ppt_level}); {sel} }}",
+      "debug_value": "{{ val r = {sel}; pinpoint.log(s\"\"\"{sel} = ${{r}}\"\"\", {ppt_level}); r }}",
       "dump_stack": "pinpoint.log(Thread.currentThread.getStackTrace.mkString(\"\\n\"), {ppt_level})",
-      "show_value": "{{ pinpoint.log(s\"\"\"{sel} = ${{{sel}.show}}\"\"\", {ppt_level}); {sel} }}",
-      "show_list": "{{ pinpoint.log(s\"\"\"{sel} = ${{{sel}.map(_.show)}}\"\"\", {ppt_level}); {sel} }}",
+      "show_value": "{{ val r = {sel}; pinpoint.log(s\"\"\"{sel} = ${{r.show}}\"\"\", {ppt_level}); r }}",
+      "show_list": "{{ val r = {sel}; pinpoint.log(s\"\"\"{sel} = ${{r.map(_.show)}}\"\"\", {ppt_level}); r }}",
+
+      // Misc
+      "creation_tracer": "val tracer = Thread.currentThread.getStackTrace.mkString(\"\\n\")",
     }
   },
 }
