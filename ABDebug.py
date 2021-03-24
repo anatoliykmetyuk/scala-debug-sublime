@@ -39,7 +39,7 @@ class AbDebugCommand(sublime_plugin.WindowCommand):
       def callback():
         self.window.run_command('terminus_send_string',
           { 'string': target_test_params['command'] + '\n' })
-      sublime.set_timeout(callback, 100),
+      sublime.set_timeout(callback, 200),
 
     if test:
       execute(test)

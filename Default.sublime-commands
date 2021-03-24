@@ -10,7 +10,7 @@
   },
   {
     "caption": "AB Debug: Create Debug Params File",
-    "command": "ab_debug_test_file",
+    "command": "ab_debug_create_params_file",
   },
   {
     "caption": "AB Debug",
