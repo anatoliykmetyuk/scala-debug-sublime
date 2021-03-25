@@ -2,7 +2,7 @@
   "pinpoint": {
     "pinpoint_cfg": "pinpoint-cfg.json",
     "build_dep_marker": "    libraryDependencies += \"com.novocode\" % \"junit-interface\" % \"0.11\" % Test,",
-    "build_dep": "    libraryDependencies += \"com.akmetiuk\" % \"pinpoint_3.0.0-RC1\" % \"0.1.0\",",
+    "build_dep": "    libraryDependencies += \"com.akmetiuk\" % \"pinpoint_3.0.0-RC2\" % \"0.1.0\",",
   },
   "nav_stack_frame": {
     "exclude": [
@@ -24,6 +24,18 @@
 
       // Misc
       "creation_tracer": "val tracer = Thread.currentThread.getStackTrace.mkString(\"\\n\")",
+      "var_mutation_tracer": {
+        "region_names": ["var_name", "var_tpe"],
+        "variables": {
+          "new_var": "{var_name}_debug"
+        },
+        "substitution": [
+          "{new_var}",
+          "var tracer = \"\"",
+          "def {var_name} = {new_var}",
+          "def {var_name}_=(x: {var_tpe}) = {{tracer = Thread.currentThread.getStackTrace.mkString(\"\\n\"); {new_var}}}"
+        ]
+      }
     }
   },
 }
