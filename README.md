@@ -1,0 +1,1 @@
+This is a suite of tools to debug issues in the [Dotty](https://github.com/lampepfl/dotty) project. For usage, see sublime-commands, sublime-keymap and sublime-settings files.
