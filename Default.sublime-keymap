@@ -1,27 +1,4 @@
 [
-  // Navigation
-  { "keys": ["super+d", "super+q"], "command": "goto_symbol_in_project" },
-  { "keys": ["super+d", "super+w"], "command": "goto_definition" },
-  { "keys": ["ctrl+q"], "command": "dash_doc" },
-
-  // Terminal
-  {
-    "keys": ["ctrl+w"],
-    "command": "destroy_pane",
-    "args": {"direction": "self"}
-  },
-  {
-    "keys": ["ctrl+t"],
-    "command": "terminus_open",
-    "args": {
-      "post_window_hooks": [
-        ["carry_file_to_pane", {"direction": "right"}]
-      ]
-    }
-  },
-  { "keys": ["ctrl+z"], "command": "better_toggle_zoom" },
-  { "keys": ["ctrl+e"], "command": "terminus_reset" },
-
   // Reference
   { "keys": ["super+alt+c"], "command": "copy_reference" },
 

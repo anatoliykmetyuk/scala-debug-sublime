@@ -35,7 +35,7 @@
           "def {var_name}: {var_tpe} = {new_var}",
           "def {var_name}_=(x: {var_tpe}) = {{ tracer = Thread.currentThread.getStackTrace.mkString(\"\\n\"); {new_var} = x }}"
         ]
-      }
-    }
+      },
+    },
   },
 }

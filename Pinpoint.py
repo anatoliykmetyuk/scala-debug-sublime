@@ -14,7 +14,7 @@ def locate_build_file(root):
         return full_path
 
 def init(roots):
-  settings = sublime.load_settings("Default.sublime-settings").get("pinpoint")  # To have the nice ['foo'] syntax
+  settings = sublime.load_settings("DottyDebug.sublime-settings").get("pinpoint")  # To have the nice ['foo'] syntax
 
   # Locate the build file and the pinpoint config
   global build_file

@@ -8,14 +8,14 @@ class ScalaDebugCommand(sublime_plugin.TextCommand):
 
   def determine_pinpoint_level(self):
     init(self.view.window().folders())
-    ab_debug_params = load_ab_debug_params(self.view.window())
+    ab_debug_params = load_ab_debug_params(self.view.window().folders())
     if ab_debug_params:
       return max([len(v['markers']) for v in ab_debug_params.values()])
     else:
       return len(pinpoint_settings()['markers'])
 
   def run(self, edit, snippet):
-    target_snippet = sublime.load_settings("Default.sublime-settings").get("scala_debug")['snippets'][snippet]
+    target_snippet = sublime.load_settings("DottyDebug.sublime-settings").get("scala_debug")['snippets'][snippet]
     pinpoint_level = None
 
     if isinstance(target_snippet, str):
