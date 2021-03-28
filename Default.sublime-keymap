@@ -26,19 +26,18 @@
   { "keys": ["super+alt+c"], "command": "copy_reference" },
 
   // Debug
-  { "keys": ["alt+d"], "command": "scala_debug", "args": {"snippet": "debug_value"} },
-  { "keys": ["alt+s"], "command": "scala_debug", "args": {"snippet": "dump_stack"} },
   { "keys": ["alt+a"], "command": "scala_debug", "args": {"snippet": "show_value"} },
   { "keys": ["alt+shift+a"], "command": "scala_debug", "args": {"snippet": "show_list"} },
+  { "keys": ["alt+s"], "command": "scala_debug", "args": {"snippet": "dump_stack"} },
+  { "keys": ["alt+d"], "command": "scala_debug", "args": {"snippet": "debug_value"} },
   { "keys": ["alt+f"], "command": "scala_debug", "args": {"snippet": "creation_tracer"} },
-  { "keys": ["alt+r"], "command": "scala_debug", "args": {"snippet": "var_mutation_tracer"} },
-
+  { "keys": ["alt+shift+f"], "command": "scala_debug", "args": {"snippet": "var_mutation_tracer"} },
 
   // Pinpoint
   { "keys": ["alt+q"], "command": "pinpoint_mark" },
   { "keys": ["alt+w"], "command": "pinpoint_unmark" },
 
   // AB Debug
-  { "keys": ["alt+z"], "command": "ab_debug", "args": {"test": "bad"}},
-  { "keys": ["alt+x"], "command": "ab_debug", "args": {"test": "good"}},
+  { "keys": ["f3"], "command": "ab_debug", "args": {"test": "bad"}},
+  { "keys": ["f4"], "command": "ab_debug", "args": {"test": "good"}},
 ]

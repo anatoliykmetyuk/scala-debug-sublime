@@ -16,7 +16,7 @@
       "show_value_simple": "{{ println(s\"\"\"\\u001b[43;1m\\u001b[30mDEBUG:\\u001b[0m {sel} = ${{{sel}.show}}\"\"\"); {sel} }}",
 
       // Pinpoint
-      "pinpoint_dep": "libraryDependencies += \"com.akmetiuk\" % \"pinpoint_3.0.0-RC1\" % \"0.1.0\",",
+      "pinpoint_dep": "libraryDependencies += \"com.akmetiuk\" % \"pinpoint_2.13\" % \"0.1.0\",",
       "debug_value": "{{ val r = {sel}; pinpoint.log(s\"\"\"{sel} = ${{r}}\"\"\", {ppt_level}); r }}",
       "dump_stack": "pinpoint.log(Thread.currentThread.getStackTrace.mkString(\"\\n\"), {ppt_level})",
       "show_value": "{{ val r = {sel}; pinpoint.log(s\"\"\"{sel} = ${{r.show}}\"\"\", {ppt_level}); r }}",
@@ -32,8 +32,8 @@
         "substitution": [
           "{new_var}",
           "var tracer = \"\"",
-          "def {var_name} = {new_var}",
-          "def {var_name}_=(x: {var_tpe}) = {{tracer = Thread.currentThread.getStackTrace.mkString(\"\\n\"); {new_var}}}"
+          "def {var_name}: {var_tpe} = {new_var}",
+          "def {var_name}_=(x: {var_tpe}) = {{ tracer = Thread.currentThread.getStackTrace.mkString(\"\\n\"); {new_var} = x }}"
         ]
       }
     }
