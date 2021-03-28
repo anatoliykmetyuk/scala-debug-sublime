@@ -1,20 +1,27 @@
 import sublime, sublime_plugin
 import os, json
+from .Pinpoint import dotty_dir, init
 
+ab_debug_cfg_file = None
 
-def load_ab_debug_params(window):
-  for view in window.views():
-    if view.file_name():
-      if os.path.splitext(view.file_name())[1] == '.abdebug':
-        params_raw = view.substr(sublime.Region(0, view.size()))
-        return sublime.decode_value(params_raw)
+def load_ab_debug_params():
+  global ab_debug_cfg_file
+  if not ab_debug_cfg_file: # Init filename
+    ab_debug_cfg_file = os.path.join(dotty_dir, 'abdebug_cfg.json')
 
-class AbDebugCreateParamsFileCommand(sublime_plugin.TextCommand):
-  def run(self, edit):
-    test_file = self.view.window().new_file(syntax = 'Packages/JavaScript/JSON.sublime-syntax')
-    test_file.set_name('TestParams.abdebug')
-    default_params = sublime.load_resource('Packages/DottyDebug/resources/DefaultDebugParams.abdebug')
-    test_file.insert(edit, 0, default_params)
+  if not os.path.exists(ab_debug_cfg_file): # Create config if not exists
+    default_params = sublime.load_resource('Packages/DottyDebug/resources/DefaultAbDebugParams.json')
+    with open(ab_debug_cfg_file, 'w') as outfile:
+      outfile.write(default_params)
+
+  with open(ab_debug_cfg_file) as cfgFile: # Read the config into json
+    return json.loads(cfgFile.read())
+
+class AbDebugOpenConfigCommand(sublime_plugin.WindowCommand):
+  def run(self):
+    init(self.window.folders())
+    load_ab_debug_params()  # Create the file if not exists
+    self.window.open_file(ab_debug_cfg_file)
 
 class AbDebugCommand(sublime_plugin.WindowCommand):
 
@@ -24,7 +31,8 @@ class AbDebugCommand(sublime_plugin.WindowCommand):
         return view
 
   def run(self, test = None):
-    params = load_ab_debug_params(self.window)
+    init(self.window.folders())
+    params = load_ab_debug_params()
 
     def execute(target_test):
       target_test_params = params[target_test]

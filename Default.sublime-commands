@@ -9,11 +9,11 @@
     "command": "pinpoint_view_cfg",
   },
   {
-    "caption": "AB Debug: Create Debug Params File",
-    "command": "ab_debug_create_params_file",
+    "caption": "AB Debug: View Config",
+    "command": "ab_debug_open_config",
   },
   {
-    "caption": "AB Debug",
+    "caption": "AB Debug: Run Case",
     "command": "ab_debug",
   }
 ]
