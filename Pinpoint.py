@@ -5,6 +5,12 @@ build_file = None
 dotty_dir = None
 pinpoint_cfg_file = None
 
+def get_dotty_dir():
+  return dotty_dir
+
+def get_build_file():
+  return build_file
+
 def locate_build_file(root):
   pattern = re.compile(r'.*/dotty/project/Build\.scala$')
   for root, dirs, files in os.walk(root):

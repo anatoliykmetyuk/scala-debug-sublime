@@ -1,15 +1,14 @@
 import sublime, sublime_plugin
 import os, json
-from .Pinpoint import init
+from .Pinpoint import init, get_dotty_dir
 
 ab_debug_cfg_file = None
 
 def load_ab_debug_params(roots):
   init(roots)
-  from .Pinpoint import dotty_dir
   global ab_debug_cfg_file
   if not ab_debug_cfg_file: # Init filename
-    ab_debug_cfg_file = os.path.join(dotty_dir, 'abdebug_cfg.json')
+    ab_debug_cfg_file = os.path.join(get_dotty_dir(), 'abdebug_cfg.json')
 
   if not os.path.exists(ab_debug_cfg_file): # Create config if not exists
     default_params = sublime.load_resource('Packages/DottyDebug/resources/DefaultAbDebugParams.json')
@@ -32,7 +31,6 @@ class AbDebugCommand(sublime_plugin.WindowCommand):
         return view
 
   def run(self, test = None):
-    init(self.window.folders())
     params = load_ab_debug_params(self.window.folders())
 
     def execute(target_test):
