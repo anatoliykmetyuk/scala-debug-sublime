@@ -8,7 +8,7 @@ class ScalaDebugCommand(sublime_plugin.TextCommand):
 
   def determine_pinpoint_level(self):
     init(self.view.window().folders())
-    ab_debug_params = load_ab_debug_params(self.view.window().folders())
+    ab_debug_params = load_ab_debug_params(self.view.window().folders(), create_if_needed=False)
     if ab_debug_params:
       return max([len(v['markers']) for v in ab_debug_params.values()])
     else:
