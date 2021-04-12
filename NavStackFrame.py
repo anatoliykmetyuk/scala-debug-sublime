@@ -69,18 +69,17 @@ class NavStackFrameCommand(sublime_plugin.WindowCommand):
       self.jump_to_ref(highlight)
 
   def jump_to_stack_frame(self, frame):
-    print('Stack jump: ' + frame)
-    m = re.search(r'\(([\w\.]+):(\d+)\)$', frame)
+    m = re.search(r'\(([\w\.\-]+):(\d+)\)$', frame)
     if m:
       self.jump_to_file(m.group(1), m.group(2), frame.split('.'))
 
   def jump_to_ref(self, ref):
-    print('Ref jump: ' + ref)
-    m = re.search(r'/([\w\.]+):(\d+)', ref)
+    m = re.search(r'/([\w\.\-]+):(\d+)', ref)
     if m:
       self.jump_to_file(m.group(1), m.group(2), ref.split('/'))
 
   def jump_to_file(self, filename, line, knownPathChunks):
+    print('File jump: ' + filename + ':' + line)
     files = self.locate_file(filename)
     def open_file(file):
       self.window.open_file(

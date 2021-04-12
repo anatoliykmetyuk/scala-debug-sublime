@@ -17,4 +17,6 @@
   // AB Debug
   { "keys": ["f3"], "command": "ab_debug", "args": {"test": "bad"}},
   { "keys": ["f4"], "command": "ab_debug", "args": {"test": "good"}},
+  { "keys": ["f5"], "command": "ab_debug", "args": {"test": "good-1"}},
+  { "keys": ["f6"], "command": "ab_debug", "args": {"test": "good-2"}},
 ]
