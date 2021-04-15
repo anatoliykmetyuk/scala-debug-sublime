@@ -25,7 +25,7 @@
       // Misc
       "creation_tracer": "val tracer = Thread.currentThread.getStackTrace.mkString(\"\\n\")",
       "var_mutation_tracer": {
-        "region_names": ["var_name", "var_tpe"],
+        "region_names": ["var_name", "var_tpe"],  // You need to select two things separately (cmd+doubleclick on a variable): variable name and its type
         "variables": {
           "new_var": "{var_name}_debug"
         },
