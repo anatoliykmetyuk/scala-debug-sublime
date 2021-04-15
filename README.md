@@ -3,6 +3,12 @@ Tracing issues in big codebases is hard. As with any task, for effective work, i
 
 [Dotty](https://github.com/lampepfl/dotty) is one such codebase. And this project is one such tool to trace issues in it effectively. DottyDebug is a plugin for [Sublime Text 3](https://www.sublimetext.com/) that teaches this editor to do tasks related to tracing.
 
+This plugin is still work in progress. While this documentation aims to give you a nice start with it, to use it to it's fullest, you'll benefit a lot from the knowledge of the Sublime plugin system. So, if after some time playing around you like what you see, you are encouraged to spend 3 hours watching [a plugin intro series by Terence Martin](https://www.youtube.com/playlist?list=PLGfKZJVuHW91zln4ADyZA3sxGEmq32Wse) – videos 1-8 are enough to be reasonably fluent with the plugin system.
+
+This state of things is likely to change, but it may be hard for a young experimental project to capitalize on ergonomics right away (contributions welcome!).
+
+You are also very welcome to reach out to me if you need any help or want to discuss something.
+
 # Installation
 - Install Sublime Text 3.
 - Install [Origami](https://github.com/SublimeText/Origami) and [Terminus](https://github.com/randy3k/Terminus) packages via `cmd+shift+P`->`Package Control: Install Package`.
