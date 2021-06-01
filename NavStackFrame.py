@@ -44,7 +44,7 @@ class NavStackFrameCommand(sublime_plugin.WindowCommand):
     if not self.cache:
       exclude = sublime.load_settings("DottyDebug.sublime-settings").get("nav_stack_frame")["exclude"]
       for folder in self.window.folders():
-        self.cache = get_filepaths_with_oswalk(folder, r".*\.(scala|java)$", exclude)
+        self.cache.extend(get_filepaths_with_oswalk(folder, r".*\.(scala|java)$", exclude))
     return [s for s in self.cache if s.endswith('/{0}'.format(target))]
 
   def locate_current_view(self, x, y):
