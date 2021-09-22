@@ -9,6 +9,8 @@ This state of things is likely to change, but it may be hard for a young experim
 
 You are also very welcome to reach out to me if you need any help or want to discuss something.
 
+Here's my [talk](https://youtu.be/H7-PYUHId0U) on how I use it in practice.
+
 # Installation
 - Install Sublime Text 3.
 - Install [Origami](https://github.com/SublimeText/Origami) and [Terminus](https://github.com/randy3k/Terminus) packages via `cmd+shift+P`->`Package Control: Install Package`.
