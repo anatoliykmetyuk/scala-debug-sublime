@@ -8,6 +8,9 @@
   { "caption": "Pinpoint: View Config",
     "command": "pinpoint_view_cfg",
   },
+  { "caption": "Pinpoint: Install",
+    "command": "pinpoint_install",
+  },
   {
     "caption": "AB Debug: View Config",
     "command": "ab_debug_open_config",

@@ -57,6 +57,10 @@ def write_pinpoint_settings(settings):
   with open(pinpoint_cfg_file, 'w') as outfile:
     json.dump(settings, outfile)
 
+class PinpointInstallCommand(sublime_plugin.WindowCommand):
+  def run(self):
+    init(self.window.folders())
+
 class PinpointMarkCommand(sublime_plugin.TextCommand):
   def run(self, edit):
     init(self.view.window().folders())
